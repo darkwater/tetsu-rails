@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_09_124834) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_170529) do
   create_table "anidb_animes", force: :cascade do |t|
     t.integer "dateflags"
     t.string "year"
@@ -19,10 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_124834) do
     t.string "kanji_name"
     t.string "english_name"
     t.string "short_name_list"
-    t.integer "episodes"
+    t.integer "episode_count"
     t.integer "special_ep_count"
-    t.date "air_date"
-    t.date "end_date"
+    t.datetime "air_date"
+    t.datetime "end_date"
     t.string "picname"
     t.boolean "nsfw"
     t.integer "specials_count"
@@ -85,12 +85,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_124834) do
     t.string "irc_server"
     t.string "url"
     t.string "picname"
-    t.integer "founded_date"
-    t.integer "disbanded_date"
+    t.datetime "founded_date"
+    t.datetime "disbanded_date"
     t.integer "date_flags"
-    t.integer "last_release_date"
-    t.integer "last_activity_date"
+    t.datetime "last_release_date"
+    t.datetime "last_activity_date"
     t.string "group_relations"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "anidb_related_animes", force: :cascade do |t|
+    t.integer "from_id", null: false
+    t.integer "to_id", null: false
+    t.string "rtype", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "anidb_related_characters", force: :cascade do |t|
+    t.integer "anime_id", null: false
+    t.integer "character_id", null: false
+    t.integer "creator_id"
+    t.string "appearance"
+    t.string "ctype"
+    t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

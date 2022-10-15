@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  anime_id: 1
+  character_id: 1
+  creator_id: 1
+  appearance: MyString
+  ctype: MyString
+  gender: MyString
+
+two:
+  anime_id: 1
+  character_id: 1
+  creator_id: 1
+  appearance: MyString
+  ctype: MyString
+  gender: MyString
