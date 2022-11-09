@@ -1,0 +1,448 @@
+type Anime {
+  airDate: ISO8601Date!
+  atype: String!
+  createdAt: ISO8601DateTime!
+  creditsCount: Int!
+  endDate: ISO8601Date!
+  englishName: String!
+  episodeCount: Int!
+  episodes(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): EpisodeConnection!
+  files(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): FileConnection!
+  id: ID!
+  nsfw: Boolean!
+  otherCount: Int!
+  otherName: String!
+  parodyCount: Int!
+  picname: String!
+  romajiName: String!
+  shortNameList: [String!]!
+  specialEpCount: Int!
+  specialsCount: Int!
+  trailerCount: Int!
+  updatedAt: ISO8601DateTime!
+  year: String!
+}
+
+"""
+The connection type for Anime.
+"""
+type AnimeConnection {
+  """
+  A list of edges.
+  """
+  edges: [AnimeEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Anime]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type AnimeEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Anime
+}
+
+type Episode {
+  aired: ISO8601Date!
+  anime: Anime!
+  createdAt: ISO8601DateTime!
+  englishName: String!
+  epno: String!
+  etype: Int!
+  files(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): FileConnection!
+  id: ID!
+  indexedFiles(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): IndexedFileConnection!
+  kanjiName: String!
+
+  """
+  Length of the episode in minutes
+  """
+  length: Int!
+  rating: Int!
+  romajiName: String!
+  updatedAt: ISO8601DateTime!
+  votes: Int!
+}
+
+"""
+The connection type for Episode.
+"""
+type EpisodeConnection {
+  """
+  A list of edges.
+  """
+  edges: [EpisodeEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [Episode]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type EpisodeEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Episode
+}
+
+type File {
+  airedDate: ISO8601Date!
+  anime: Anime!
+  colourDepth: String!
+  createdAt: ISO8601DateTime!
+  description: String!
+  episode: Episode!
+  group: Group!
+  id: ID!
+  indexedFiles(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): IndexedFileConnection!
+
+  """
+  Length of the file in seconds
+  """
+  length: Int!
+  quality: String!
+  size: Int!
+  source: String!
+  state: Int!
+  updatedAt: ISO8601DateTime!
+}
+
+"""
+The connection type for File.
+"""
+type FileConnection {
+  """
+  A list of edges.
+  """
+  edges: [FileEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [File]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type FileEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: File
+}
+
+type Group {
+  animeCount: Int!
+  createdAt: ISO8601DateTime!
+  dateFlags: Int!
+  disbandedDate: ISO8601Date
+  fileCount: Int!
+  files(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): FileConnection!
+  foundedDate: ISO8601Date!
+  id: ID!
+  ircChannel: String!
+  ircServer: String!
+  lastActivityDate: ISO8601DateTime!
+  lastReleaseDate: ISO8601DateTime!
+  name: String!
+  picname: String!
+  rating: Int!
+  shortName: String!
+  updatedAt: ISO8601DateTime!
+  url: String!
+  votes: Int!
+}
+
+"""
+An ISO 8601-encoded date
+"""
+scalar ISO8601Date
+
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
+type IndexedFile {
+  createdAt: ISO8601DateTime!
+  file: File
+  filename: String!
+  filesize: Int!
+  id: ID!
+  path: String!
+  updatedAt: ISO8601DateTime!
+}
+
+"""
+The connection type for IndexedFile.
+"""
+type IndexedFileConnection {
+  """
+  A list of edges.
+  """
+  edges: [IndexedFileEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [IndexedFile]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type IndexedFileEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: IndexedFile
+}
+
+type Mutation {
+  """
+  An example field added by the generator
+  """
+  testField: String!
+}
+
+"""
+Information about pagination in a connection.
+"""
+type PageInfo {
+  """
+  When paginating forwards, the cursor to continue.
+  """
+  endCursor: String
+
+  """
+  When paginating forwards, are there more items?
+  """
+  hasNextPage: Boolean!
+
+  """
+  When paginating backwards, are there more items?
+  """
+  hasPreviousPage: Boolean!
+
+  """
+  When paginating backwards, the cursor to continue.
+  """
+  startCursor: String
+}
+
+type Query {
+  anime(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): AnimeConnection!
+  episodes(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+    aid: ID!
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): EpisodeConnection!
+}

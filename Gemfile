@@ -51,3 +51,5 @@ gem "digest-ed2k", "~> 1.0"
 gem "digest-ed2k-hash", "~> 0.3.0"
 
 gem "sidekiq", "~> 6.5"
+
+gem "graphql", "~> 2.0"

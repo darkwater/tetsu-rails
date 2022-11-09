@@ -30,7 +30,6 @@ module Anidb
 
     def initialize
       @redis = Redis.new
-      auth
     end
 
     def send(data)
@@ -166,8 +165,8 @@ module Anidb
       end
     end
 
-    def episode(eid:)
-      res = request("EPISODE", eid: eid)
+    def episode(args)
+      res = request("EPISODE", args)
 
       if res =~ /^240 EPISODE/
         data = EPISODE_FIELDS.zip(res.split("\n")[1].split("|")).to_h
